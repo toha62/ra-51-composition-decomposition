@@ -10,49 +10,59 @@ import AdsBlock from './App';
 function App() {
   return (
     <>
-      <NewsHeader date={date}>
-        {mainNewsList.map( (item) => 
-          <a href="item.link" target="_blank" rel="noopener noreferrer">{item.title}</a>
-        )}        
-      </NewsHeader> 
+      /** 
+       * Header. Main news.
+       * @param {array} mainNewsList list of news
+       * @param {string} date current date
+       */
+      <NewsHeader mainNewsList={mainNewsList} date={date} />   
       
-      <News>
-        {newsList.map( (item) => 
-          <li key={item.id}>
-            <a href="item.link" target="_blank" rel="noopener noreferrer">
-              <div className="news-icon">
-                <img src="item.imgUrl" alt="" />
-              </div>
-              <span>{item.title}</span>
-            </a>
-          </li>          
-        )}
-      </News> 
+      /** 
+       * News list.
+       * @param {array} newsList list of news
+       */
+      <News newsList={newsList} />
+        
+      /** 
+       * Exchange rate list.
+       * @param {array} rates list of exchange rates
+       */
+      <ExchangeRate rates={rates} />
 
-      <ExchangeRate>
-        {rates.map( (item) => 
-            <li key={item.id}>
-              <a href="item.link" target="_blank" rel="noopener noreferrer">
-                <div className="rate-item">
-                  <span>item.title</span>
-                  <span>item.value</span>
-                  <span>item.rate</span>
-                </div>                
-              </a>
-            </li>          
-          )}
-      </ExchangeRate>
-
+      /** 
+       * Side ads.
+       * @param {object} sideAds object contain data of ads
+       */
       <SideAds img={sideAds.img} link={sideAds.link}>        
         <Card title={sideAds.title}>
           <p>{sideAds.text}</p>
         </Card>          
       </SideAds>
 
+      /** 
+       * Main menu.
+       * @param {array} menuItems list of menu items
+       */
       <Menu menuItems={menuItems} />
-      <Search logo={search.logo} example={search.example} />
+
+      /** 
+       * Search block.
+       * @param {string} logo url og logo
+       * @param {string} example some text
+       * @param {function} handleSubmit callback function
+       */
+      <Search logo={search.logo} example={search.example} handleSubmit={handleSubmit}/>
+
+      /** 
+       * Main ads.
+       * @param {object} ads object contain data of ads
+       */
       <AdsBlock ads={ads} />
 
+      /** 
+       * Base card.
+       * @param {string} title title of card
+       */
       <Card title={'Погода'}>
         <img src="#" alt="" />
         <div className="temperature">+17</div>
@@ -61,6 +71,10 @@ function App() {
         </div>
       </Card>
 
+      /** 
+       * Base card.
+       * @param {string} title title of card
+       */
       <Card title={cardsData[0].title}>
         <ul>
           {cardsData[0].items.map( (item) => 
@@ -74,10 +88,14 @@ function App() {
         </ul>        
       </Card>
 
+      /** 
+       * Base card.
+       * @param {string} title title of card
+       */
       <Card title={cardsData[1].title}>
         <ul>
           {cardsData[0].items.map( (item) => 
-            <li>
+            <li key={item.id}>
               <a href={item.link}>                
                 <span>{item.text}</span>
               </a>
@@ -86,6 +104,11 @@ function App() {
         </ul>        
       </Card>
 
+      /** 
+       * Base card.
+       * @param {string} title title of card
+       * @param {component} headerImg html of header image
+       */
       <Card
         title={cardsData[2].title}
         headerImg={
@@ -96,7 +119,7 @@ function App() {
       >
         <ul>
           {cardsData[0].items.map( (item) => 
-            <li>
+            <li key={item.id}>
               <a href={item.link}>
                 <span>{item.time}</span>
                 <span>{item.mainText}</span>
@@ -107,10 +130,14 @@ function App() {
         </ul>        
       </Card>
 
+      /** 
+       * Base card.
+       * @param {string} title title of card
+       */
       <Card title={cardsData[3].title}>
         <ul>
           {cardsData[0].items.map( (item) => 
-            <li>
+            <li key={item.id}>
               <a href={item.link}>
                 <div className="icon">
                   <img src={item.icon} alt="" />
@@ -124,7 +151,7 @@ function App() {
       </Card>
     </> 
     
-);
+  );
 }
 
 export default App

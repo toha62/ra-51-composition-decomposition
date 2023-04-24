@@ -1,7 +1,9 @@
-export default function NewsHeader({ date, children }) {
+export default function NewsHeader({ mainNewsList, date }) {
   return (
     <div className="news-header-block">
-      {children}
+      {mainNewsList.map( (item) => 
+          <a href="item.link" target="_blank" rel="noopener noreferrer">{item.title}</a>
+      )}      
       <div>{date}</div>
     </div>
   );
